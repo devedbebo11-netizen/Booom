@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Archive_17</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    overflow:hidden;
+    font-family:'Space Mono', monospace;
+    color:white;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    background:url("https://i.imgur.com/8fK4h6B.png");
+    opacity:0.04;
+    pointer-events:none;
+    animation:noise .2s infinite;
+}
+
+@keyframes noise{
+    0%{transform:translate(0,0)}
+    25%{transform:translate(2px,-2px)}
+    50%{transform:translate(-2px,2px)}
+    75%{transform:translate(1px,1px)}
+    100%{transform:translate(0,0)}
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.glitch{
+    font-size:55px;
+    position:relative;
+    letter-spacing:4px;
+    animation:flicker 2s infinite;
+}
+
+.glitch::before,
+.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.glitch::before{
+    color:red;
+    transform:translateX(-2px);
+    opacity:.6;
+}
+
+.glitch::after{
+    color:cyan;
+    transform:translateX(2px);
+    opacity:.6;
+}
+
+@keyframes flicker{
+    0%,18%,22%,25%,53%,57%,100%{
+        opacity:1;
+    }
+
+    20%,24%,55%{
+        opacity:.4;
+    }
+}
+
+.sub{
+    margin-top:20px;
+    opacity:.6;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+button{
+    margin-top:50px;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.3);
+    color:white;
+    padding:15px 35px;
+    font-size:14px;
+    letter-spacing:3px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:white;
+    color:black;
+    transform:scale(1.05);
+}
+
+.hidden{
+    display:none;
+}
+
+#reveal{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.bigText{
+    font-size:70px;
+    animation:zoom .7s ease;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(.2);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.lol{
+    margin-top:20px;
+    font-size:22px;
+    opacity:.7;
+}
+
+.flash{
+    animation:flash .15s 5;
+}
+
+@keyframes flash{
+    50%{
+        background:white;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<div class="container" id="main">
+
+    <div class="glitch" data-text="ARCHIVE_17">
+        ARCHIVE_17
+    </div>
+
+    <div class="sub">
+        UNIDENTIFIED MEDIA DETECTED
+    </div>
+
+    <button onclick="startExperience()">
+        OPEN FILE
+    </button>
+
+</div>
+
+<div id="reveal" class="hidden">
+
+    <div class="bigText">
+        😂 GOT YOU
+    </div>
+
+    <div class="lol">
+        اتخضيت صح؟
+    </div>
+
+</div>
+
+<audio id="beep">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3">
+</audio>
+
+<script>
+
+const beep = document.getElementById("beep");
+
+function startExperience(){
+
+    beep.play();
+
+    document.body.classList.add("flash");
+
+    document.querySelector(".sub").innerHTML =
+    "SCANNING FILES...";
+
+    setTimeout(()=>{
+
+        document.querySelector(".sub").innerHTML =
+        "MATCH FOUND";
+
+    },1500);
+
+    setTimeout(()=>{
+
+        document.getElementById("main").classList.add("hidden");
+
+        document.getElementById("reveal").classList.remove("hidden");
+
+        document.body.style.background = "#000";
+
+    },3500);
+
+}
+
+</script>
+
+</body>
+</html>
